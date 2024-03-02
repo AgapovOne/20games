@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://csa7is0a7n7r"]
+[gd_scene load_steps=13 format=3 uid="uid://csa7is0a7n7r"]
 
 [ext_resource type="Texture2D" uid="uid://bwctboa08ooio" path="res://Bg.png" id="1_fj3g3"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="2_16a2a"]
-[ext_resource type="FontFile" uid="uid://dki68k218wd2v" path="res://PublicPixel-z84yD.ttf" id="2_evwo7"]
+[ext_resource type="FontFile" uid="uid://dki68k218wd2v" path="res://pixelfont.ttf" id="2_evwo7"]
 [ext_resource type="Script" path="res://scenes/Player.gd" id="3_4tk58"]
+[ext_resource type="Script" path="res://scenes/Computer.gd" id="4_amwxg"]
 [ext_resource type="Script" path="res://scenes/Ball.gd" id="4_lf1r8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sknv1"]
@@ -49,6 +50,7 @@ shape = SubResource("RectangleShape2D_sknv1")
 
 [node name="Computer" type="StaticBody2D" parent="."]
 position = Vector2(1082, 324)
+script = ExtResource("4_amwxg")
 
 [node name="ColorRect" type="ColorRect" parent="Computer"]
 anchors_preset = 4
@@ -137,4 +139,6 @@ vertical_alignment = 1
 one_shot = true
 autostart = true
 
+[connection signal="body_entered" from="LeftScore" to="." method="_on_left_score_body_entered"]
+[connection signal="body_entered" from="ScoreRight" to="." method="_on_score_right_body_entered"]
 [connection signal="timeout" from="BallTimer" to="." method="_on_ball_timer_timeout"]
